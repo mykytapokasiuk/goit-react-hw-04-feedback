@@ -14,14 +14,14 @@
 .statisticsList {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 6px;
     margin-top: 10px;
 }
 
 .statisticsListItem {
     padding: 2px 5px;
     color: #ffffff;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.05em;
     text-transform: capitalize;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Section from './Section/Section.js';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions.js';
 import Statistics from './Statistics/Statistics.js';
@@ -8,10 +8,7 @@ const App = () => {
   const [goodFeedBack, setGood] = useState(0);
   const [neutralFeedBack, setNeutral] = useState(0);
   const [badFeedBack, setBad] = useState(0);
-  const [totalFeedback, setTotalFeedback] = useState(0);
-  const [positiveFeedbackPercentage, setPositiveFeedbackPercentage] =
-    useState(0);
-
+  const totalFeedback = goodFeedBack + neutralFeedBack + badFeedBack;
   const arrayOfOptionKeys = ['good', 'neutral', 'bad'];
 
   const onLeaveFeedback = option => {
@@ -31,15 +28,10 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    setTotalFeedback(() => goodFeedBack + neutralFeedBack + badFeedBack);
-  }, [goodFeedBack, neutralFeedBack, badFeedBack]);
+  const countPositiveFeedback = () =>
+    +((goodFeedBack * 100) / totalFeedback || 0).toFixed(0);
 
-  useEffect(() => {
-    setPositiveFeedbackPercentage(
-      () => +((goodFeedBack * 100) / totalFeedback || 0).toFixed(0)
-    );
-  }, [goodFeedBack, totalFeedback]);
+  const positiveFeedbackPercentage = countPositiveFeedback();
 
   return (
     <div>
